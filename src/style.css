@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+
+body {
+    font-family: "Lato", sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 13pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+div.wrapper {
+    /* border:1px solid gray; */
+    width: 75%;
+    margin: 200px auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+
+div.timezoneList {
+    width: 30%;
+}
+
+div.home {
+    width: 6%;
+    font-size: 8pt;
+    margin-right: 13px;
+    text-align: center;
+    vertical-align: center;
+}
+
+div.modify {
+    width: 2%;
+    margin-left: 20px;
+    margin-right: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+    /* background-color: salmon; */
+}
+
+div.home img {
+    margin-top: 3px;
+    width: 14px;
+}
+
+span.makeHome img {
+    width: 13px;
+    margin-top: 14px;
+}
+
+div.modify img {
+    width: 15px;
+    display: block;
+}
+
+div.modify img:first-of-type {
+    width: 10px;
+    display: block;
+    margin-top: 3px;
+}
+
+div.search {
+    width: 100%;
+    padding: 20px 0;
+    margin-bottom: 10px;
+}
+
+div.search input[type="text"] {
+    width: 400px;
+    padding: 6px;
+}
+
+input[type="submit"] {
+    outline: none;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    background-color: black;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 9pt;
+}
+
+div.timezoneComp {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 8.5pt;
+    width: 100%;
+    display: flex;
+    margin-bottom: 18px;
+    /* border:1px solid salmon; */
+}
+
+div.hoursList {
+    width: 69%;
+}
+
+div.hoursComp {
+    width: 100%;
+    /* border:1px solid purple; */
+    display: flex;
+    height: 45px;
+    padding: 0;
+    margin-bottom: 37px;
+}
+
+div.hoursComp div.day {
+    display: flex;
+}
+
+div.timezone {
+    width: 75%;
+    /* background-color: lavender; */
+}
+
+div.timezone div.timezone1 {
+    font-size: 11pt;
+    margin-bottom: 12px;
+}
+
+div.timezone div.timezone2 {
+    color: #6e6e6e;
+}
+
+div.timezone div.timezone1,
+div.timezone div.timezone2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+span.abbrZone {
+    border-radius: 40%;
+}
+
+div.day span {
+    /* width: 70px; */
+    width: 33px;
+    padding: 10px 0;
+    font-size: 10pt;
+    text-align: center;
+    border: 1px solid rgb(238, 224, 224);
+    height: 35px;
+}
+
+div.day .date {
+    /* width:70px; */
+    padding: 2px 0;
+    font-size: 8pt;
+    text-align: center;
+    border: 1px solid rgb(238, 224, 224);
+    height: 35px;
+}
+
+span.focus {
+    /* width:70px; */
+    background-color: black;
+    color: white;
+}
+
+ul.suggestionList {
+    width: 400px;
+    margin-top: 5px;
+    padding: 0;
+    z-index: 10;
+    list-style-type: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 9pt;
+    border: 1px solid gray;
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+}
+
+ul.suggestionList li {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 10px;
+    background: white;
+    cursor: hand;
+}
+
+ul.suggestionList li:hover {
+    background: black;
+    color: white;
+}
+
+ul.suggestionList .listCountry {
+    text-align: right;
+    width: 45%;
+}
+
+span.highlight {
+    background-color: gainsboro;
+}
+
+.ds-selected {
+    background-color: cornflowerblue;
+    color: white;
+    font-weight: bold;
+}
+
+.today {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.makeHome:hover,
+.remove:hover {
+    cursor: pointer;
+}
