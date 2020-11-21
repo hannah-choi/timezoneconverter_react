@@ -8,6 +8,8 @@ function Search(props){
     
     const [inputValue, setInputValue] = useState("");
 
+    const [matchValue, setMatchValue] = useState([]);
+
     const inputChange = (e) => {
         setInputValue(e.target.value)
         if(e.target.value.length > 0){
@@ -15,12 +17,10 @@ function Search(props){
         }
     }
 
-    let matchArray = []
-
     const findMatches = (typedWord) => {
         const regex = new RegExp(typedWord, 'gi')
-        matchArray = timezoneDb.filter(timezone => timezone.match(regex)).slice(0,10)
-        console.log(matchArray)
+        let matchArray = timezoneDb.filter(timezone => timezone.match(regex)).slice(0,10)
+        setMatchValue(matchArray)
     }
     
     return (
@@ -28,7 +28,7 @@ function Search(props){
            <input type="text" name="searchInput" className="searchInput" value = {inputValue} onChange = {inputChange} />
            <input type="submit" name="submit" value="search" />
            <ul className = "suggestionList">
-               <SuggestionList matchArray = {matchArray} value = {inputChange}/>
+               <SuggestionList matchArray = {matchValue} value = {inputValue}/>
            </ul>
         </div>
     )
