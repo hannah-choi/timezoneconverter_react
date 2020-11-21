@@ -6,18 +6,19 @@ import moment from 'moment-timezone';
 function App() {
 
 	const [zoneName, setZoneName] = useState(null)
+	const [inputValue, setInputValue] = useState(null);
 
 	const addZone = (data) =>{
-		console.log(data)
 		const cityName = data.replace(' ','_');
 		setZoneName(cityName.split('/')
 		.map(data => data[0].toUpperCase() + data.substr(1).toLowerCase()).join('/'))
+		setInputValue('')
 	}
 
 	return (
 		<div className="wrapper">
 			<h2>TIMEZONE CONVERTER</h2>  
-			<Search addZone = {addZone}/>
+			<Search addZone = {addZone} inputValue = {inputValue} setInputValue = {setInputValue}/>
 			<TimezoneGroup zoneName = {zoneName} />
     	</div>
   	);

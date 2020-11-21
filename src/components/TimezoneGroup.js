@@ -3,7 +3,7 @@ import Timezone from './Timezone'
 import Hour from './Hour'
 import moment from 'moment-timezone';
 
-function TimezoneGroup(zoneName){
+function TimezoneGroup({zoneName}){
 
     let defaultOffset = 0
 
@@ -27,10 +27,11 @@ function TimezoneGroup(zoneName){
     console.log(getOffset())
     console.log(zoneName)
 
-    return(
+    return (
+        zoneName &&
         <>
         <Timezone zoneName = {zoneName} offset = {getOffset()} /> 
-        <Hour />
+        <Hour zoneName = {zoneName} offset = {getOffset()} gmt = {getGMT()}/>
         </>
     )
 
