@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Search from './Search'
-import TimezoneGroup from './TimezoneGroup'
+import Search from './components/Search'
+import TimezoneGroup from './components/TimezoneGroup'
 
 function App() {
 	

@@ -20,7 +20,7 @@ function Search(props){
     const findMatches = (typedWord) => {
         const regex = new RegExp(typedWord, 'gi')
         matchArray = timezoneDb.filter(timezone => timezone.match(regex)).slice(0,10)
-        //console.log(matchArray)
+        console.log(matchArray)
     }
     
     return (
