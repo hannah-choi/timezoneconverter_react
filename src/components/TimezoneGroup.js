@@ -25,6 +25,7 @@ function TimezoneGroup(zoneName){
     }
 
     console.log(getOffset())
+    console.log(zoneName)
 
     return(
         <>

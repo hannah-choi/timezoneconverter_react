@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import moment from 'moment-timezone';
+
 
 function SuggestionItem({data, addZone}){
     return (
