@@ -18,6 +18,12 @@ function App() {
         setInputValue("");
     };
 
+    const deleteZone = index => {
+        let newArray = Array.from(zoneName);
+        newArray.splice(index, 1);
+        setZoneName(newArray);
+    };
+
     return (
         <div className="wrapper">
             <h2>TIMEZONE CONVERTER</h2>
@@ -27,7 +33,12 @@ function App() {
                 setInputValue={setInputValue}
             />
             {zoneName.map((data, i) => (
-                <TimezoneGroup zoneName={data} key={i} />
+                <TimezoneGroup
+                    zoneName={data}
+                    key={i}
+                    deleteZone={deleteZone}
+                    index={i}
+                />
             ))}
         </div>
     );

@@ -50,12 +50,10 @@ function Hour({ zoneName, offset, gmt, setTime }) {
     };
 
     useEffect(() => {
-        console.log(div.current);
-
         new DragSelect({
-            selectables: document.querySelectorAll(`.selectable`),
+            selectables: div.current.querySelectorAll(`.selectable`),
             callback: () => {
-                let selected = document.querySelectorAll(".ds-selected");
+                let selected = div.current.querySelectorAll(".ds-selected");
                 let time = null;
                 const returnZero = function (number) {
                     if (number.classList.contains("date")) {
