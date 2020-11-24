@@ -64,7 +64,7 @@ function Timezone({ zoneName, offset, time }) {
                     <div className="timezone1">
                         <span className="cityName homeCity">{getCity()}</span>
                         <span className="time homeTime">
-                            {time === null ? getNow() : time}
+                            {time === "" ? getNow() : time}
                         </span>
                     </div>
                     <div className="timezone2">

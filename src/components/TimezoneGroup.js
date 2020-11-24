@@ -8,7 +8,6 @@ function TimezoneGroup({ zoneName }) {
 
     const setDefault = (zoneName = moment.tz.guess()) => {
         defaultOffset = moment.tz(zoneName).utcOffset() / 60;
-        console.log(defaultOffset);
     };
 
     const [time, setTime] = useState("");
@@ -33,10 +32,15 @@ function TimezoneGroup({ zoneName }) {
             <>
                 <Timezone
                     zoneName={zoneName}
-                    offset={getOffset()}
+                    offset={getOffset(zoneName)}
                     time={time}
                 />
-                <Hour zoneName={zoneName} offset={getOffset()} gmt={getGMT()} />
+                <Hour
+                    zoneName={zoneName}
+                    offset={getOffset(zoneName)}
+                    gmt={getGMT()}
+                    setTime={setTime}
+                />
             </>
         )
     );
