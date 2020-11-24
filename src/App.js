@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Search from "./components/Search";
 import TimezoneGroup from "./components/TimezoneGroup";
-import moment from "moment-timezone";
 
 function App() {
     const [zoneName, setZoneName] = useState([]);
@@ -9,7 +8,6 @@ function App() {
 
     const addZone = data => {
         const cityName = data.replace(" ", "_");
-        // let newArray = zoneName;
         const stringZoneName = cityName
             .split("/")
             .map(data => data[0].toUpperCase() + data.substr(1).toLowerCase())
