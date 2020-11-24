@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
-import moment from 'moment-timezone';
-import SuggestionItem from './SuggestionItem';
+import React, { useState } from "react";
+import SuggestionItem from "./SuggestionItem";
 
-function SuggestionList({matchArray, value, addZone}){
-
-    let list = ''
+function SuggestionList({ matchArray, value, addZone }) {
+    let list = "";
 
     // const selectItem = ({target}) => {
     //     target.value
     // }
 
-
-    if(matchArray && matchArray.length > 0){
-        list = matchArray.map((data,i) => {
-            const regex = new RegExp(value, 'gi')
+    if (matchArray && matchArray.length > 0) {
+        list = matchArray.map((data, i) => {
+            const regex = new RegExp(value, "gi");
             //let timezoneName = data.replace(regex, <span className="highlight">{value}</span>)
-            return <SuggestionItem data = {data} key = {i} addZone = {addZone}/>
-    
-        })
+            return <SuggestionItem data={data} key={i} addZone={addZone} />;
+        });
     }
 
-    return (
-        <ul className = "suggestionList">
-        {list}
-        </ul>
-    )
-
+    return <ul className="suggestionList">{list}</ul>;
 }
 
-export default SuggestionList
+export default SuggestionList;

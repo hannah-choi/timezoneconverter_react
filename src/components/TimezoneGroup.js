@@ -1,40 +1,39 @@
-import React from 'react'
-import Timezone from './Timezone'
-import Hour from './Hour'
-import moment from 'moment-timezone';
+import React from "react";
+import Timezone from "./Timezone";
+import Hour from "./Hour";
+import moment from "moment-timezone";
 
-function TimezoneGroup({zoneName}){
-
-    let defaultOffset = 0
+function TimezoneGroup({ zoneName }) {
+    let defaultOffset = 0;
 
     const setDefault = (zoneName = moment.tz.guess()) => {
-        defaultOffset = moment.tz(zoneName).utcOffset()/60
-        console.log(defaultOffset)
-    }
+        defaultOffset = moment.tz(zoneName).utcOffset() / 60;
+        console.log(defaultOffset);
+    };
 
-    setDefault()
+    setDefault();
 
-    const getGMT = (zoneName) => {
-        return moment.tz(zoneName).utcOffset()/60
-    }
+    const getGMT = zoneName => {
+        return moment.tz(zoneName).utcOffset() / 60;
+    };
 
-    const getOffset = (zoneName) => {
-        let displayOffset = defaultOffset - getGMT(zoneName)
-        let difference = displayOffset < 1 ? `${displayOffset}`.replace('-','+') : '-' + (displayOffset);
+    const getOffset = zoneName => {
+        let displayOffset = defaultOffset - getGMT(zoneName);
+        let difference =
+            displayOffset < 1
+                ? `${displayOffset}`.replace("-", "+")
+                : "-" + displayOffset;
         return difference;
-    }
-
-    console.log(getOffset())
-    console.log(zoneName)
+    };
 
     return (
-        zoneName &&
-        <>
-        <Timezone zoneName = {zoneName} offset = {getOffset()} /> 
-        <Hour zoneName = {zoneName} offset = {getOffset()} gmt = {getGMT()}/>
-        </>
-    )
-
+        zoneName && (
+            <>
+                <Timezone zoneName={zoneName} offset={getOffset()} />
+                <Hour zoneName={zoneName} offset={getOffset()} gmt={getGMT()} />
+            </>
+        )
+    );
 }
 
-export default TimezoneGroup
+export default TimezoneGroup;
