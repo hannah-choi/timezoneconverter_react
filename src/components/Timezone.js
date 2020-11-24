@@ -1,9 +1,7 @@
 import React from "react";
 import moment from "moment-timezone";
 
-function Timezone({ zoneName, offset }) {
-    console.log(zoneName, offset);
-
+function Timezone({ zoneName, offset, time }) {
     const getCity = () => {
         return zoneName.split("/").pop().replace("_", " ");
     };
@@ -37,7 +35,7 @@ function Timezone({ zoneName, offset }) {
     // }
 
     // const timeUpdate = (time) => {
-    //     this.time = time
+    //     time = time
     //     this.div.querySelector('.time').innerHTML = time
     // }
 
@@ -65,7 +63,9 @@ function Timezone({ zoneName, offset }) {
                 <div className="timezone">
                     <div className="timezone1">
                         <span className="cityName homeCity">{getCity()}</span>
-                        <span className="time homeTime">{getNow()}</span>
+                        <span className="time homeTime">
+                            {time === null ? getNow() : time}
+                        </span>
                     </div>
                     <div className="timezone2">
                         <span className="countryName homeCode">

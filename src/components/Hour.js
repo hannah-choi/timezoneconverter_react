@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import moment from "moment-timezone";
+import DragSelect from "dragselect";
 
 function Hour({ zoneName, offset, gmt }) {
+    const div = useRef();
+
     const getNow = () => {
         return parseInt(moment.tz(zoneName).format("HH"));
     };
@@ -44,10 +47,45 @@ function Hour({ zoneName, offset, gmt }) {
         return hours;
     };
 
+    useEffect(() => {
+        console.log(div.current);
+
+        new DragSelect({
+            selectables: document.querySelectorAll(`.selectable`),
+            callback: () => {
+                let selected = document.querySelectorAll(".ds-selected");
+                let time = null;
+                const returnZero = function (number) {
+                    if (number.classList.contains("date")) {
+                        return "00";
+                    }
+                    return number.textContent;
+                };
+
+                if (selected.length === 0) {
+                    time = getCurrentTime();
+                } else if (selected.length === 1) {
+                    time = returnZero(selected[0]) + ":00";
+                } else {
+                    time =
+                        returnZero(selected[0]) +
+                        ":00 - " +
+                        returnZero(selected[selected.length - 1]) +
+                        ":00";
+                }
+                // timeUpdate(time);
+            },
+        });
+    }, [div]); // [] >> 1번만 실행이 된다.
+    //[div] = div 값이 바뀔때만 useEffect내의 코드를 실행
+    // 이 파라메터가 없을경우 계속 실행
+
     return (
         <div className="hoursList">
             <div class="hoursComp">
-                <div class="day">{getHours()}</div>
+                <div class="day" ref={div}>
+                    {getHours()}
+                </div>
             </div>
         </div>
     );
