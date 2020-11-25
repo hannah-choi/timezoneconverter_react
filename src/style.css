@@ -183,7 +183,7 @@ ul.suggestionList {
     font-size: 9pt;
     border: 1px solid gray;
     position: absolute;
-    opacity: 0;
+    /* opacity: 0; */
     z-index: 10;
 }
 

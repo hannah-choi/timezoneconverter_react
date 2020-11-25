@@ -1,38 +1,52 @@
-import React, { useState } from 'react';
-import moment from 'moment-timezone';
-import SuggestionList from './SuggestionList'
+import React, { useState } from "react";
+import moment from "moment-timezone";
+import SuggestionList from "./SuggestionList";
 
-function Search(props){
+function Search({ addZone, setSearchInput }) {
+    const timezoneDb = Object.keys(moment.tz._zones)
+        .map(data => data.replace("_", "/"))
+        .map(data => data.replace("_", " "));
 
-    const timezoneDb = Object.keys(moment.tz._zones).map(data=> data.replace('_','/')).map(data=> data.replace('_',' '))
-    
     const [inputValue, setInputValue] = useState("");
+    const [matchArray, setMatchArray] = useState([]);
 
-    const inputChange = (e) => {
-        setInputValue(e.target.value)
-        if(e.target.value.length > 0){
-            findMatches(e.target.value)
+    const inputChange = ({ target }) => {
+        setInputValue(target.value);
+        if (target.value.length > 0) {
+            findMatches(target.value);
         }
-    }
+    };
 
-    let matchArray = []
+    const findMatches = value => {
+        const regex = new RegExp(value, "gi");
+        setMatchArray(
+            timezoneDb.filter(timezone => timezone.match(regex)).slice(0, 10)
+        );
+    };
 
-    const findMatches = (typedWord) => {
-        const regex = new RegExp(typedWord, 'gi')
-        matchArray = timezoneDb.filter(timezone => timezone.match(regex)).slice(0,10)
-        console.log(matchArray)
-    }
-    
     return (
         <div className="search">
-           <input type="text" name="searchInput" className="searchInput" value = {inputValue} onChange = {inputChange} />
-           <input type="submit" name="submit" value="search" />
-           <ul className = "suggestionList">
-               <SuggestionList matchArray = {matchArray} value = {inputChange}/>
-           </ul>
+            <input
+                type="text"
+                name="searchInput"
+                className="searchInput"
+                value={inputValue}
+                onChange={e => inputChange(e)}
+                autoComplete="off"
+            />
+            <input type="submit" name="submit" value="search" />
+            {inputValue && (
+                <ul className="suggestionList">
+                    <SuggestionList
+                        matchArray={matchArray}
+                        value={inputChange}
+                        addZone={addZone}
+                        setSearchInput={setSearchInput}
+                    />
+                </ul>
+            )}
         </div>
-    )
-
+    );
 }
 
-export default Search
+export default Search;
