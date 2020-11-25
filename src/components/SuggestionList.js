@@ -11,8 +11,16 @@ function SuggestionList({ matchArray, value, addZone }) {
     if (matchArray && matchArray.length > 0) {
         list = matchArray.map((data, i) => {
             const regex = new RegExp(value, "gi");
-            //let timezoneName = data.replace(regex, <span className="highlight">{value}</span>)
-            return <SuggestionItem data={data} key={i} addZone={addZone} />;
+            // let a = Object.entries(timezoneName);
+            // console.log(Object.entries(a));
+            return (
+                <SuggestionItem
+                    data={data}
+                    key={i}
+                    value={value}
+                    addZone={addZone}
+                />
+            );
         });
     }
 
