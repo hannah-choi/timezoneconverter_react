@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import moment from "moment-timezone";
 import Search from "./components/Search";
 import TimezoneGroup from "./components/TimezoneGroup";
 
 function App() {
-    const [zoneName, setZoneName] = useState([]);
+    const [zoneName, setZoneName] = useState([moment.tz.guess()]);
     const [inputValue, setInputValue] = useState("");
+    const [defaultZone, setDefaultZone] = useState(moment.tz.guess());
+
+    const defaultOffset = moment.tz(defaultZone).utcOffset() / 60;
 
     const addZone = data => {
         const cityName = data.replace(" ", "_");
@@ -22,6 +26,21 @@ function App() {
         setZoneName(newArray);
     };
 
+    const zoneList = () => {
+        return zoneName.map((data, i) => (
+            <TimezoneGroup
+                zoneName={data}
+                key={i}
+                deleteZone={deleteZone}
+                index={i}
+                setDefaultZone={setDefaultZone}
+                defaultOffset={defaultOffset}
+            />
+        ));
+    };
+
+    const list = useMemo(zoneList, [zoneName, defaultZone]);
+
     return (
         <div className="wrapper">
             <h2>TIMEZONE CONVERTER</h2>
@@ -30,14 +49,7 @@ function App() {
                 inputValue={inputValue}
                 setInputValue={setInputValue}
             />
-            {zoneName.map((data, i) => (
-                <TimezoneGroup
-                    zoneName={data}
-                    key={i}
-                    deleteZone={deleteZone}
-                    index={i}
-                />
-            ))}
+            {list}
         </div>
     );
 }
