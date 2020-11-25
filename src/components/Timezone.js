@@ -33,19 +33,6 @@ function Timezone({
         return moment.tz(zoneName).format("z");
     };
 
-    const getOffset = () => {
-        return moment.tz(zoneName).format("Z").split(":").shift();
-    };
-
-    // const remove = () => {
-    //     this.div.remove()
-    // }
-
-    // const timeUpdate = (time) => {
-    //     time = time
-    //     this.div.querySelector('.time').innerHTML = time
-    // }
-
     return (
         <div className="timezoneList">
             <div className="timezoneComp">

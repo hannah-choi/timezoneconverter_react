@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function SuggestionItem({ data, addZone, value }) {
     let index = data.indexOf(value);

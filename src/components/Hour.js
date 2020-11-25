@@ -3,8 +3,6 @@ import moment from "moment-timezone";
 import DragSelect from "dragselect";
 
 function Hour({ zoneName, offset, gmt, setTime }) {
-    //console.log("hour");
-
     const div = useRef();
 
     const getNow = () => {
