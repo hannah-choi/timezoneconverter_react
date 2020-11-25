@@ -56,6 +56,9 @@ function Hour({ zoneName, offset, gmt, setTime }) {
         new DragSelect({
             selectables: div.current.querySelectorAll(`.selectable`),
             callback: () => {
+                if (div.current === null) {
+                    return;
+                }
                 let selected = div.current.querySelectorAll(".ds-selected");
                 let time = null;
                 const returnZero = function (number) {
@@ -64,7 +67,6 @@ function Hour({ zoneName, offset, gmt, setTime }) {
                     }
                     return number.textContent;
                 };
-
                 if (selected.length === 0) {
                     time = getCurrentTime();
                 } else if (selected.length === 1) {
