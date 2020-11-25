@@ -1,7 +1,14 @@
 import React from "react";
 import moment from "moment-timezone";
 
-function Timezone({ zoneName, offset, time, deleteZone, index }) {
+function Timezone({
+    zoneName,
+    offset,
+    time,
+    deleteZone,
+    index,
+    setDefaultZone,
+}) {
     const getCity = () => {
         return zoneName.split("/").pop().replace("_", " ");
     };
@@ -54,8 +61,8 @@ function Timezone({ zoneName, offset, time, deleteZone, index }) {
                         ) : (
                             <img
                                 className="makeHome"
-                                data-city={zoneName}
                                 src="images/home.svg"
+                                onClick={() => setDefaultZone(zoneName)}
                             />
                         )}
                     </span>

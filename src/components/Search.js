@@ -31,6 +31,7 @@ function Search({ addZone, inputValue, setInputValue }) {
                 className="searchInput"
                 value={inputValue}
                 onChange={inputChange}
+                autoComplete="off"
             />
             <input type="submit" name="submit" value="search" />
             {inputValue && (

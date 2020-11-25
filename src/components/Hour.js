@@ -3,6 +3,8 @@ import moment from "moment-timezone";
 import DragSelect from "dragselect";
 
 function Hour({ zoneName, offset, gmt, setTime }) {
+    //console.log("hour");
+
     const div = useRef();
 
     const getNow = () => {
@@ -30,18 +32,19 @@ function Hour({ zoneName, offset, gmt, setTime }) {
     };
 
     const getHours = () => {
+        let key = 0;
         let hours = [];
         let number = offset < 0 ? 24 + offset : offset;
-        for (let i = 0; i < 24; i++) {
+        for (let i = number; i < 24; i++) {
             hours.push(
-                <span key={i} className={`selectable ${getClass(i)}`}>
+                <span key={key++} className={`selectable ${getClass(i)}`}>
                     {i === 0 ? getToday() : i}
                 </span>
             );
         }
         for (let i = 0; i < number; i++) {
             hours.push(
-                <span key={i} class={`selectable ${getClass(i)}`}>
+                <span key={key++} className={`selectable ${getClass(i)}`}>
                     {getDate(i)}
                 </span>
             );

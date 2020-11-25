@@ -3,16 +3,14 @@ import Timezone from "./Timezone";
 import Hour from "./Hour";
 import moment from "moment-timezone";
 
-function TimezoneGroup({ zoneName, deleteZone, index }) {
-    let defaultOffset = 0;
-
-    const setDefault = (zoneName = moment.tz.guess()) => {
-        defaultOffset = moment.tz(zoneName).utcOffset() / 60;
-    };
-
+function TimezoneGroup({
+    zoneName,
+    deleteZone,
+    index,
+    setDefaultZone,
+    defaultOffset,
+}) {
     const [time, setTime] = useState("");
-
-    setDefault();
 
     const getGMT = zoneName => {
         return moment.tz(zoneName).utcOffset() / 60;
@@ -24,7 +22,7 @@ function TimezoneGroup({ zoneName, deleteZone, index }) {
             displayOffset < 1
                 ? `${displayOffset}`.replace("-", "+")
                 : "-" + displayOffset;
-        return difference;
+        return parseInt(difference);
     };
 
     return (
@@ -36,6 +34,7 @@ function TimezoneGroup({ zoneName, deleteZone, index }) {
                     time={time}
                     deleteZone={deleteZone}
                     index={index}
+                    setDefaultZone={setDefaultZone}
                 />
                 <Hour
                     zoneName={zoneName}
