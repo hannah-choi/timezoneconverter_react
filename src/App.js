@@ -3,22 +3,24 @@ import Search from "./components/Search";
 import TimezoneGroup from "./components/TimezoneGroup";
 
 function App() {
-    const [cityName, setCityName] = useState("");
+    const [cityName, setCityName] = useState([]);
 
     const addZone = data => {
-        const cityName = data.replace(" ", "_");
-        const zoneName = cityName
+        const zoneName = data.replace(" ", "_");
+        const zoneNameString = zoneName
             .split("/")
             .map(data => data[0].toUpperCase() + data.substr(1).toLowerCase())
             .join("/");
-        setCityName(zoneName);
+        setCityName([...cityName, zoneNameString]);
     };
 
     return (
         <div className="wrapper">
             <h2>TIMEZONE CONVERTER</h2>
             <Search addZone={addZone} />
-            <TimezoneGroup addZone={addZone} city={cityName} />
+            {cityName.map((data, i) => (
+                <TimezoneGroup city={data} key={i} />
+            ))}
         </div>
     );
 }
