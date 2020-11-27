@@ -1,39 +1,82 @@
-import React from 'react'
+import React from "react";
+import moment from "moment-timezone";
 
-function Timezone(){
+function Timezone({ addZone, city, offset }) {
+    console.log(city);
 
-    // const render = function(){
-    //     return `
-    //     <div class="timezoneComp" >
-    //         <div class="home">
-    //         ${this.offset != 0 ? this.offset:'<img src="./../frontEnd/images/placeholder.svg">'}
-    //         <span class="makeHome">${this.offset == 0 ? '':`<img class = "makeHome" data-city = ${this.currentTimezone} src="./../frontEnd/images/home.svg">`}</span>
-    //         </div>
-    //         <div class="timezone">
-    //             <div class="timezone1">
-    //                 <span class="cityName homeCity">${getCity()}</span>
-    //                 <span class="time homeTime">${time === null ? this.getNow():this.time}</span>
-    //             </div>
-    //             <div class="timezone2">
-    //                 <span class="countryName homeCode">${getCountry()}</span>
-    //                 <span class="abbrZone">${getAbbr()}</span>
-    //                 <span class="date homeDate">${getToday()}</span>
-    //             </div>
-    //         </div>
-    //         <div class="modify">
-    //                 <img class ="remove" data-city = ${this.currentTimezone} src="images/cancel.svg" width="10px">
-    //         </div>
-    //     </div>
-    //         `
-    // }
+    const getCity = () => {
+        return city.split("/").pop().replace("_", " ");
+    };
+
+    const getNow = () => {
+        return moment.tz(city).format("HH:mm");
+    };
+
+    const getToday = () => {
+        return moment.tz(city).format("ddd, DD MMM");
+    };
+
+    const getCountry = () => {
+        let countryName = moment.tz.zone(city).countries();
+        if (countryName.length > 1) {
+            return countryName[1];
+        }
+        return countryName;
+    };
+
+    const getAbbr = () => {
+        return moment.tz(city).format("z");
+    };
+
+    const getOffset = () => {
+        return moment.tz(city).format("Z").split(":").shift();
+    };
+
+    // const timeUpdate = time => {
+    //     this.time = time;
+    //     this.div.querySelector(".time").innerHTML = time;
+    // };
 
     return (
-
-        <div className = "timezoneList">
+        <div className="timezoneList">
+            <div className="timezoneComp">
+                <div className="home">
+                    {offset != 0
+                        ? offset
+                        : '<img src="images/placeholder.svg" />'}
+                    <span className="makeHome">
+                        {offset == 0
+                            ? ""
+                            : `<img className = "makeHome" data-city = {currentTimezone} src="./../frontEnd/images/home.svg">`}
+                    </span>
+                </div>
+                <div className="timezone">
+                    <div className="timezone1">
+                        <span className="cityName homeCity">{getCity()}</span>
+                        <span className="time homeTime">
+                            {getNow()}
+                            {/* {time === null ? getNow() : time} */}
+                        </span>
+                    </div>
+                    <div className="timezone2">
+                        <span className="countryName homeCode">
+                            {getCountry()}
+                        </span>
+                        <span className="abbrZone">{getAbbr()}</span>
+                        <span className="date homeDate">{getToday()}</span>
+                    </div>
+                </div>
+                <div className="modify">
+                    <img
+                        className="remove"
+                        data-city={city}
+                        src="images/cancel.svg"
+                        width="10px"
+                    />
+                </div>
+            </div>
         </div>
-
-    )
-
+    );
 }
 
-export default Timezone
+export default Timezone;

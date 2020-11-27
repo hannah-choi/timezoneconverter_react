@@ -1,31 +1,28 @@
-import React, { useState } from 'react';
-import Search from './components/Search'
-import TimezoneGroup from './components/TimezoneGroup'
+import React, { useState } from "react";
+import Search from "./components/Search";
+import TimezoneGroup from "./components/TimezoneGroup";
 
 function App() {
-	
-	const [city, setCity] = useState("");
+    const [cityName, setCityName] = useState("");
 
-	const selectCity = (selectedCity) => {
-		setCity(selectedCity)
-	}
+    const addZone = data => {
+        const cityName = data.replace(" ", "_");
+        const zoneName = cityName
+            .split("/")
+            .map(data => data[0].toUpperCase() + data.substr(1).toLowerCase())
+            .join("/");
+        setCityName(zoneName);
+        //this.setTimezoneGroup = new TimezoneGroup(zoneName, this.getDifference(zoneName), this.getGMT(zoneName))
+        //this.groupList.push(this.setTimezoneGroup)
+    };
 
-	// const addZone = (???) =>{
-	// 	const cityName = target.dataset.zone.replace(' ','_');
-	// 	const zoneName = cityName.split('/')
-	// 	.map(data => data[0].toUpperCase() + data.substr(1).toLowerCase()).join('/');
-	// 	//this.setTimezoneGroup = new TimezoneGroup(zoneName, this.getDifference(zoneName), this.getGMT(zoneName))
-	// 	//this.groupList.push(this.setTimezoneGroup)
-	// }
-
-	return (
-		<div className="wrapper">
-			<h2>TIMEZONE CONVERTER</h2>  
-			<Search onSelect = {selectCity}/>
-			<TimezoneGroup addZone = {function(e){
-			}} />
-    	</div>
-  	);
+    return (
+        <div className="wrapper">
+            <h2>TIMEZONE CONVERTER</h2>
+            <Search addZone={addZone} />
+            <TimezoneGroup addZone={addZone} city={cityName} />
+        </div>
+    );
 }
 
 export default App;

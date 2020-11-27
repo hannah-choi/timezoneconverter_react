@@ -1,16 +1,37 @@
-import React from 'react'
-import Timezone from './Timezone'
-import Hour from './Hour'
+import React from "react";
+import Timezone from "./Timezone";
+import Hour from "./Hour";
+import moment from "moment-timezone";
 
-function TimezoneGroup(){
+function TimezoneGroup({ addZone, city }) {
+    // const setDefault = (city = moment.tz.guess()) => {
+    //     let defaultTimezone = city;
+    //     let defaultOffset = moment.tz(city).utcOffset() / 60;
+    // };
 
-    return(
-        <>
-        <Timezone />
-        <Hour />
-        </>
-    )
+    let defaultOffset = moment.tz(city).utcOffset() / 60;
 
+    const getOffset = city => {
+        let displayOffset = defaultOffset - getGMT(city);
+        let difference =
+            displayOffset < 1
+                ? `${displayOffset}`.replace("-", "+")
+                : "-" + displayOffset;
+        return difference;
+    };
+
+    const getGMT = city => {
+        return moment.tz(city).utcOffset() / 60;
+    };
+
+    return (
+        city && (
+            <>
+                <Timezone city={city} offset={getOffset()} gmt={getGMT()} />
+                <Hour />
+            </>
+        )
+    );
 }
 
-export default TimezoneGroup
+export default TimezoneGroup;
