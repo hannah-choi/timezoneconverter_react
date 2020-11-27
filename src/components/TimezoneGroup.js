@@ -28,7 +28,7 @@ function TimezoneGroup({ city }) {
         city && (
             <>
                 <Timezone city={city} offset={getOffset()} gmt={getGMT()} />
-                <Hour />
+                <Hour city={city} offset={getOffset()} gmt={getGMT()} />
             </>
         )
     );

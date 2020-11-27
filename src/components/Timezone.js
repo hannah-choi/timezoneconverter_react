@@ -53,7 +53,7 @@ function Timezone({ city, offset }) {
                             <img
                                 className="makeHome"
                                 data-city={city}
-                                src="./../frontEnd/images/home.svg"
+                                src="images/home.svg"
                             />
                         )}
                     </span>
