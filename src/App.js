@@ -12,8 +12,6 @@ function App() {
             .map(data => data[0].toUpperCase() + data.substr(1).toLowerCase())
             .join("/");
         setCityName(zoneName);
-        //this.setTimezoneGroup = new TimezoneGroup(zoneName, this.getDifference(zoneName), this.getGMT(zoneName))
-        //this.groupList.push(this.setTimezoneGroup)
     };
 
     return (

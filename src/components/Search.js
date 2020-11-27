@@ -42,6 +42,7 @@ function Search({ addZone }) {
                         matchArray={matchArray}
                         addZone={addZone}
                         value={inputValue}
+                        setInputValue={setInputValue}
                     />
                 </ul>
             )}

@@ -3,7 +3,7 @@ import Timezone from "./Timezone";
 import Hour from "./Hour";
 import moment from "moment-timezone";
 
-function TimezoneGroup({ addZone, city }) {
+function TimezoneGroup({ city }) {
     // const setDefault = (city = moment.tz.guess()) => {
     //     let defaultTimezone = city;
     //     let defaultOffset = moment.tz(city).utcOffset() / 60;
@@ -11,17 +11,17 @@ function TimezoneGroup({ addZone, city }) {
 
     let defaultOffset = moment.tz(city).utcOffset() / 60;
 
+    const getGMT = city => {
+        return moment.tz(city).utcOffset() / 60;
+    };
+
     const getOffset = city => {
         let displayOffset = defaultOffset - getGMT(city);
         let difference =
             displayOffset < 1
                 ? `${displayOffset}`.replace("-", "+")
                 : "-" + displayOffset;
-        return difference;
-    };
-
-    const getGMT = city => {
-        return moment.tz(city).utcOffset() / 60;
+        return parseInt(difference);
     };
 
     return (

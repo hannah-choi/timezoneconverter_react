@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SuggestionItem from "./SuggestionItem";
 
-function SuggestionList({ addZone, matchArray, value }) {
+function SuggestionList({ addZone, matchArray, value, setInputValue }) {
     let list = "";
 
     console.log(matchArray);
@@ -13,7 +13,13 @@ function SuggestionList({ addZone, matchArray, value }) {
             //     regex,
             //     `<span className="highlight">${props.value}</span>`
             // );
-            return <SuggestionItem data={data} addZone={addZone} />;
+            return (
+                <SuggestionItem
+                    data={data}
+                    addZone={addZone}
+                    setInputValue={setInputValue}
+                />
+            );
         });
     }
 
