@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment-timezone";
 
-function Timezone({ city, offset }) {
+function Timezone({ city, offset, time }) {
     console.log(city);
 
     const getCity = () => {
@@ -41,7 +41,7 @@ function Timezone({ city, offset }) {
         <div className="timezoneList">
             <div className="timezoneComp">
                 <div className="home">
-                    {offset !== 0 ? (
+                    {offset != 0 ? (
                         offset
                     ) : (
                         <img src="images/placeholder.svg" />
@@ -62,8 +62,7 @@ function Timezone({ city, offset }) {
                     <div className="timezone1">
                         <span className="cityName homeCity">{getCity()}</span>
                         <span className="time homeTime">
-                            {getNow()}
-                            {/* {time === null ? getNow() : time} */}
+                            {time === "" ? getNow() : time}
                         </span>
                     </div>
                     <div className="timezone2">

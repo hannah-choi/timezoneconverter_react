@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import moment from "moment-timezone";
+import DragSelect from "dragselect";
 
-function Hour({ city, offset, gmt }) {
+function Hour({ city, offset, gmt, setTime }) {
+    let div = useRef();
+
     const getNow = () => {
         return parseInt(moment.tz(city).format("HH"));
     };
@@ -52,39 +55,43 @@ function Hour({ city, offset, gmt }) {
         return hours;
     };
 
-    // const getDs(timeUpdate) {
-    //     new DragSelect({
-    //         selectables: div.querySelectorAll(.selectable),
-    //         callback: () => {
-    //             let selected = div.querySelectorAll(".ds-selected");
-    //             let time = null;
-    //             const returnZero = function (number) {
-    //                 if (number.classList.contains("date")) {
-    //                     return "00";
-    //                 }
-    //                 return number.textContent;
-    //             };
+    useEffect(() => {
+        console.log(div);
 
-    //             if (selected.length === 0) {
-    //                 time = getCurrentTime();
-    //             } else if (selected.length === 1) {
-    //                 time = returnZero(selected[0]) + ":00";
-    //             } else {
-    //                 time =
-    //                     returnZero(selected[0]) +
-    //                     ":00 - " +
-    //                     returnZero(selected[selected.length - 1]) +
-    //                     ":00";
-    //             }
-    //             timeUpdate(time);
-    //         },
-    //     });
-    // }
+        new DragSelect({
+            selectables: div.current.querySelectorAll(`.selectable`),
+            callback: () => {
+                let selected = div.current.querySelectorAll(".ds-selected");
+                let time = null;
+                const returnZero = function (number) {
+                    if (number.classList.contains("date")) {
+                        return "00";
+                    }
+                    return number.textContent;
+                };
+
+                if (selected.length === 0) {
+                    time = getCurrentTime();
+                } else if (selected.length === 1) {
+                    time = returnZero(selected[0]) + ":00";
+                } else {
+                    time =
+                        returnZero(selected[0]) +
+                        ":00 - " +
+                        returnZero(selected[selected.length - 1]) +
+                        ":00";
+                }
+                setTime(time);
+            },
+        });
+    }, [div]);
 
     return (
         <div className="hoursList">
             <div className="hoursComp">
-                <div class="day">{getHours()}</div>
+                <div class="day" ref={div}>
+                    {getHours()}
+                </div>
             </div>
         </div>
     );
