@@ -38,18 +38,21 @@ function Hour({ city, offset, gmt, setTime }) {
     // };
 
     const getHours = () => {
+        let key = 0;
         let hours = [];
         let number = offset < 0 ? 24 + offset : offset;
         for (let i = number; i < 24; i++) {
             hours.push(
-                <span class={`selectable ${getClass(i)}`}>
+                <span key={key++} className={`selectable ${getClass(i)}`}>
                     {i === 0 ? getToday() : i}
                 </span>
             );
         }
         for (let i = 0; i < number; i++) {
             hours.push(
-                <span class={`selectable ${getClass(i)}`}>{getDate(i)}</span>
+                <span key={key++} className={`selectable ${getClass(i)}`}>
+                    {getDate(i)}
+                </span>
             );
         }
         return hours;
@@ -89,7 +92,7 @@ function Hour({ city, offset, gmt, setTime }) {
     return (
         <div className="hoursList">
             <div className="hoursComp">
-                <div class="day" ref={div}>
+                <div className="day" ref={div}>
                     {getHours()}
                 </div>
             </div>

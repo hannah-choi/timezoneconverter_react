@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment-timezone";
 
-function Timezone({ city, offset, time }) {
+function Timezone({ city, offset, time, deleteZone, index }) {
     const getCity = () => {
         return city.split("/").pop().replace("_", " ");
     };
@@ -77,6 +77,9 @@ function Timezone({ city, offset, time }) {
                         data-city={city}
                         src="images/cancel.svg"
                         width="10px"
+                        onClick={e => {
+                            deleteZone(index);
+                        }}
                     />
                 </div>
             </div>

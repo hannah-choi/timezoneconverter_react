@@ -14,12 +14,23 @@ function App() {
         setCityName([...cityName, zoneNameString]);
     };
 
+    const deleteZone = index => {
+        const newArray = Array.from(cityName);
+        newArray.splice(index, 1);
+        setCityName(newArray);
+    };
+
     return (
         <div className="wrapper">
             <h2>TIMEZONE CONVERTER</h2>
             <Search addZone={addZone} />
             {cityName.map((data, i) => (
-                <TimezoneGroup city={data} key={i} />
+                <TimezoneGroup
+                    city={data}
+                    key={i}
+                    index={i}
+                    deleteZone={deleteZone}
+                />
             ))}
         </div>
     );
