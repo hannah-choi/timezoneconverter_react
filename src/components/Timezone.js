@@ -2,8 +2,6 @@ import React from "react";
 import moment from "moment-timezone";
 
 function Timezone({ city, offset, time }) {
-    console.log(city);
-
     const getCity = () => {
         return city.split("/").pop().replace("_", " ");
     };

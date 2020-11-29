@@ -19,11 +19,9 @@ function TimezoneGroup({ city }) {
 
     const getOffset = city => {
         let displayOffset = defaultOffset - getGMT(city);
-        let difference =
-            displayOffset < 1
-                ? `${displayOffset}`.replace("-", "+")
-                : "-" + displayOffset;
-        return parseInt(difference);
+        console.log(defaultOffset);
+        console.log(displayOffset);
+        return parseInt(displayOffset);
     };
 
     return (
