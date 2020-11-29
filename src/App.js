@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Search from "./components/Search";
 import TimezoneGroup from "./components/TimezoneGroup";
 import moment from "moment-timezone";
@@ -24,20 +24,26 @@ function App() {
         setCityName(newArray);
     };
 
+    const zoneRender = () => {
+        return cityName.map((data, i) => (
+            <TimezoneGroup
+                city={data}
+                key={i}
+                index={i}
+                deleteZone={deleteZone}
+                defaultOffset={defaultOffset}
+                setDefaultZone={setDefaultZone}
+            />
+        ));
+    };
+
+    const zone = useMemo(zoneRender, [cityName, defaultZone]);
+
     return (
         <div className="wrapper">
             <h2>TIMEZONE CONVERTER</h2>
             <Search addZone={addZone} />
-            {cityName.map((data, i) => (
-                <TimezoneGroup
-                    city={data}
-                    key={i}
-                    index={i}
-                    deleteZone={deleteZone}
-                    defaultOffset={defaultOffset}
-                    setDefaultZone={setDefaultZone}
-                />
-            ))}
+            {zone}
         </div>
     );
 }
