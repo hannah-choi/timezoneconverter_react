@@ -25,17 +25,9 @@ function Hour({ city, offset, gmt, setTime }) {
         return `${i === 0 ? "date" : ""} ${i === getNow() ? "today" : ""}`;
     };
 
-    // getClass(i) {
-    //     return `${i === 0 ? "date" : ""} ${i === this.getNow() ? "today" : ""}`;
-    // }
-
     const getDate = i => {
         return i === 0 ? (gmt < 0 ? getTomorrow() : getToday()) : i;
     };
-
-    // const remove = () => {
-    //     div.remove();
-    // };
 
     const getHours = () => {
         let key = 0;
@@ -64,6 +56,9 @@ function Hour({ city, offset, gmt, setTime }) {
         new DragSelect({
             selectables: div.current.querySelectorAll(`.selectable`),
             callback: () => {
+                if (div.current === null) {
+                    return;
+                }
                 let selected = div.current.querySelectorAll(".ds-selected");
                 let time = null;
                 const returnZero = function (number) {
