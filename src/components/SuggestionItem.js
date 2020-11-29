@@ -1,4 +1,5 @@
 import React from "react";
+import store from "../store";
 
 function SuggestionItem({ data, addZone, value }) {
     let index = data.indexOf(value);
@@ -8,7 +9,8 @@ function SuggestionItem({ data, addZone, value }) {
             className="suggestionItem"
             data-zone={data}
             onClick={() => {
-                addZone(data);
+                //addZone(data);
+                store.dispatch({ type: "ADDZONE", city: data });
             }}
         >
             <span className="listTimezone">

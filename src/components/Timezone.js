@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment-timezone";
+import store from "../store";
 
 function Timezone({
     zoneName,
@@ -76,7 +77,10 @@ function Timezone({
                         src="images/cancel.svg"
                         width="10px"
                         onClick={e => {
-                            deleteZone(index);
+                            store.dispatch({
+                                type: "DELETEZONE",
+                                index: index,
+                            });
                         }}
                     />
                 </div>

@@ -2,23 +2,29 @@ import React, { useState, useMemo } from "react";
 import moment from "moment-timezone";
 import Search from "./components/Search";
 import TimezoneGroup from "./components/TimezoneGroup";
+import store from "./store";
 
 function App() {
-    const [zoneName, setZoneName] = useState([moment.tz.guess()]);
+    const [zoneName, setZoneName] = useState(store.getState().city);
     const [inputValue, setInputValue] = useState("");
     const [defaultZone, setDefaultZone] = useState(moment.tz.guess());
 
     const defaultOffset = moment.tz(defaultZone).utcOffset() / 60;
 
-    const addZone = data => {
-        const cityName = data.replace(" ", "_");
-        const stringZoneName = cityName
-            .split("/")
-            .map(data => data[0].toUpperCase() + data.substr(1).toLowerCase())
-            .join("/");
-        setZoneName([...zoneName, stringZoneName]);
-        setInputValue("");
-    };
+    store.subscribe(() => {
+        setZoneName(store.getState().city);
+        setInputValue(store.getState().type);
+    });
+
+    // const addZone = data => {
+    //     const cityName = data.replace(" ", "_");
+    //     const stringZoneName = cityName
+    //         .split("/")
+    //         .map(data => data[0].toUpperCase() + data.substr(1).toLowerCase())
+    //         .join("/");
+    //     setZoneName([...zoneName, stringZoneName]);
+    //     setInputValue("");
+    // };
 
     const deleteZone = index => {
         let newArray = Array.from(zoneName);
@@ -44,11 +50,7 @@ function App() {
     return (
         <div className="wrapper">
             <h2>TIMEZONE CONVERTER</h2>
-            <Search
-                addZone={addZone}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-            />
+            <Search inputValue={inputValue} setInputValue={setInputValue} />
             {list}
         </div>
     );
