@@ -1,5 +1,12 @@
 import { createStore } from "redux";
 import moment from "moment-timezone";
+import { createAction } from "redux-actions";
+
+const ADDZONE = "ADDZONE";
+export const addZone = createAction(ADDZONE);
+
+const DELETEZONE = "DELETEZONE";
+export const deleteZone = createAction(DELETEZONE);
 
 const initState = {
     city: [moment.tz.guess()],
