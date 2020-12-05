@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment-timezone";
-import store from "../store";
+import * as store from "../store/store";
+import { connect } from "react-redux";
 
 function Timezone({
     zoneName,
@@ -76,11 +77,8 @@ function Timezone({
                         data-city={zoneName}
                         src="images/cancel.svg"
                         width="10px"
-                        onClick={e => {
-                            store.dispatch({
-                                type: "DELETEZONE",
-                                index: index,
-                            });
+                        onClick={() => {
+                            deleteZone(index);
                         }}
                     />
                 </div>
@@ -89,4 +87,10 @@ function Timezone({
     );
 }
 
-export default Timezone;
+export default connect(null, dispatch => {
+    return {
+        deleteZone: index => {
+            dispatch(store.deleteZone(index));
+        },
+    };
+})(Timezone);

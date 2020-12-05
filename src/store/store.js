@@ -2,11 +2,11 @@ import { createStore } from "redux";
 import moment from "moment-timezone";
 import { createAction } from "redux-actions";
 
-const ADDZONE = "ADDZONE";
-export const addZone = createAction(ADDZONE);
+const ADD_ZONE = "ADD_ZONE";
+export const addZone = createAction(ADD_ZONE);
 
-const DELETEZONE = "DELETEZONE";
-export const deleteZone = createAction(DELETEZONE);
+const DELETE_ZONE = "DELETE_ZONE";
+export const deleteZone = createAction(DELETE_ZONE);
 
 const initState = {
     city: [moment.tz.guess()],
@@ -15,14 +15,14 @@ const initState = {
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case "ADDZONE":
+        case ADD_ZONE:
             return {
-                city: [...state.city, action.city],
+                city: [...state.city, action.payload],
                 input: "",
             };
-        case "DELETEZONE":
+        case DELETE_ZONE:
             let newArray = Array.from(state.city);
-            newArray.splice(action.index, 1);
+            newArray.splice(action.payload, 1);
             return {
                 city: newArray,
                 input: "",

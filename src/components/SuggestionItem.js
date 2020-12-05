@@ -1,5 +1,6 @@
 import React from "react";
-import store from "../store";
+import * as store from "../store/store";
+import { connect } from "react-redux";
 
 function SuggestionItem({ data, addZone, value }) {
     let index = data.indexOf(value);
@@ -9,8 +10,7 @@ function SuggestionItem({ data, addZone, value }) {
             className="suggestionItem"
             data-zone={data}
             onClick={() => {
-                //addZone(data);
-                store.dispatch({ type: "ADDZONE", city: data });
+                addZone(data);
             }}
         >
             <span className="listTimezone">
@@ -22,4 +22,11 @@ function SuggestionItem({ data, addZone, value }) {
     );
 }
 
-export default SuggestionItem;
+export default connect(
+    () => {},
+    dispatch => {
+        return {
+            addZone: city => dispatch(store.addZone(city)),
+        };
+    }
+)(SuggestionItem);
