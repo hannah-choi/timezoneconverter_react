@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import moment from "moment-timezone";
 import SuggestionList from "./SuggestionList";
 
-function Search({ addZone, inputValue, setInputValue }) {
+function Search({ addZone }) {
+    const [inputValue, setInputValue] = useState("");
+
     const timezoneDb = Object.keys(moment.tz._zones)
         .map(data => data.replace("_", "/"))
         .map(data => data.replace("_", " "));

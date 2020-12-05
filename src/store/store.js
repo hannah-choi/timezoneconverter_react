@@ -9,7 +9,7 @@ const DELETE_ZONE = "DELETE_ZONE";
 export const deleteZone = createAction(DELETE_ZONE);
 
 const initState = {
-    city: [moment.tz.guess()],
+    zoneName: [moment.tz.guess()],
     input: "",
 };
 
@@ -17,14 +17,14 @@ const reducer = (state = initState, action) => {
     switch (action.type) {
         case ADD_ZONE:
             return {
-                city: [...state.city, action.payload],
+                zoneName: [...state.zoneName, action.payload],
                 input: "",
             };
         case DELETE_ZONE:
-            let newArray = Array.from(state.city);
+            let newArray = Array.from(state.zoneName);
             newArray.splice(action.payload, 1);
             return {
-                city: newArray,
+                zoneName: newArray,
                 input: "",
             };
         default:

@@ -22,11 +22,8 @@ function SuggestionItem({ data, addZone, value }) {
     );
 }
 
-export default connect(
-    () => {},
-    dispatch => {
-        return {
-            addZone: city => dispatch(store.addZone(city)),
-        };
-    }
-)(SuggestionItem);
+export default connect(null, dispatch => {
+    return {
+        addZone: city => dispatch(store.addZone(city)),
+    };
+})(SuggestionItem);

@@ -23,13 +23,13 @@ function Timezone({
         return moment.tz(zoneName).format("ddd, DD MMM");
     };
 
-    const getCountry = () => {
-        let countryName = moment.tz.zone(zoneName).countries();
-        if (countryName.length > 1) {
-            return countryName[1];
-        }
-        return countryName;
-    };
+    // const getCountry = () => {
+    //     let countryName = moment.tz.zone(zoneName).countries();
+    //     if (countryName.length > 1) {
+    //         return countryName[1];
+    //     }
+    //     return countryName;
+    // };
 
     const getAbbr = () => {
         return moment.tz(zoneName).format("z");
@@ -65,7 +65,7 @@ function Timezone({
                     </div>
                     <div className="timezone2">
                         <span className="countryName homeCode">
-                            {getCountry()}
+                            {/* {getCountry()} */}
                         </span>
                         <span className="abbrZone">{getAbbr()}</span>
                         <span className="date homeDate">{getToday()}</span>
