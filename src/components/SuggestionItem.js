@@ -1,8 +1,9 @@
 import React from "react";
-import * as store from "../store/store";
+import * as searchAction from "../module/search";
+import * as cityActions from "../module/city";
 import { connect } from "react-redux";
 
-function SuggestionItem({ data, addZone, value }) {
+function SuggestionItem({ data, addZone, value, changeInput }) {
     let index = data.indexOf(value);
 
     return (
@@ -11,6 +12,7 @@ function SuggestionItem({ data, addZone, value }) {
             data-zone={data}
             onClick={() => {
                 addZone(data);
+                changeInput();
             }}
         >
             <span className="listTimezone">
@@ -24,6 +26,7 @@ function SuggestionItem({ data, addZone, value }) {
 
 export default connect(null, dispatch => {
     return {
-        addZone: city => dispatch(store.addZone(city)),
+        addZone: city => dispatch(cityActions.addZone(city)),
+        changeInput: () => dispatch(searchAction.changeInput("")),
     };
 })(SuggestionItem);

@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment-timezone";
-import * as store from "../store/store";
+import * as store from "../module/city";
 import { connect } from "react-redux";
 
 function Timezone({
@@ -9,7 +9,7 @@ function Timezone({
     time,
     deleteZone,
     index,
-    setDefaultZone,
+    changeDefaultZone,
 }) {
     const getCity = () => {
         return zoneName.split("/").pop().replace("_", " ");
@@ -51,7 +51,7 @@ function Timezone({
                             <img
                                 className="makeHome"
                                 src="images/home.svg"
-                                onClick={() => setDefaultZone(zoneName)}
+                                onClick={() => changeDefaultZone(zoneName)}
                             />
                         )}
                     </span>
@@ -87,10 +87,4 @@ function Timezone({
     );
 }
 
-export default connect(null, dispatch => {
-    return {
-        deleteZone: index => {
-            dispatch(store.deleteZone(index));
-        },
-    };
-})(Timezone);
+export default Timezone;

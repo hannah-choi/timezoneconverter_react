@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import moment from "moment-timezone";
 import SuggestionList from "./SuggestionList";
+import { connect } from "react-redux";
+import * as searchAction from "../module/search";
 
-function Search({ addZone }) {
-    const [inputValue, setInputValue] = useState("");
-
+function Search({ addZone, inputValue, changeInput }) {
     const timezoneDb = Object.keys(moment.tz._zones)
         .map(data => data.replace("_", "/"))
         .map(data => data.replace("_", " "));
     const [matchValue, setMatchValue] = useState([]);
 
+    console.log(timezoneDb);
+
     const inputChange = e => {
-        setInputValue(e.target.value);
+        changeInput(e.target.value);
         if (e.target.value.length > 0) {
             findMatches(e.target.value);
         }
@@ -32,7 +34,7 @@ function Search({ addZone }) {
                 name="searchInput"
                 className="searchInput"
                 value={inputValue}
-                onChange={inputChange}
+                onChange={e => inputChange(e)}
                 autoComplete="off"
             />
             <input type="submit" name="submit" value="search" />
@@ -47,4 +49,15 @@ function Search({ addZone }) {
     );
 }
 
-export default Search;
+export default connect(
+    state => {
+        return { inputValue: state.search.input };
+    },
+    dispatch => {
+        return {
+            changeInput: input => {
+                dispatch(searchAction.changeInput(input));
+            },
+        };
+    }
+)(Search);

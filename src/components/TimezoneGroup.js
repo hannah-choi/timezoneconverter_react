@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import Timezone from "./Timezone";
 import Hour from "./Hour";
 import moment from "moment-timezone";
+import * as store from "../module/city";
+import { connect } from "react-redux";
 
 function TimezoneGroup({
     zoneName,
     deleteZone,
     index,
-    setDefaultZone,
     defaultOffset,
+    changeDefaultZone,
 }) {
     const [time, setTime] = useState("");
 
@@ -34,7 +36,7 @@ function TimezoneGroup({
                     time={time}
                     deleteZone={deleteZone}
                     index={index}
-                    setDefaultZone={setDefaultZone}
+                    changeDefaultZone={changeDefaultZone}
                 />
                 <Hour
                     zoneName={zoneName}
@@ -47,4 +49,18 @@ function TimezoneGroup({
     );
 }
 
-export default TimezoneGroup;
+export default connect(
+    state => {
+        return { defaultOffset: state.city.defaultOffset };
+    },
+    dispatch => {
+        return {
+            deleteZone: index => {
+                dispatch(store.deleteZone(index));
+            },
+            changeDefaultZone: city => {
+                dispatch(store.changeDefaultZone(city));
+            },
+        };
+    }
+)(TimezoneGroup);
