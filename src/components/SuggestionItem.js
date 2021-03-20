@@ -1,17 +1,18 @@
 import React from "react";
+import zones from "./zones";
 import * as searchAction from "../module/search";
 import * as cityActions from "../module/city";
 import { connect } from "react-redux";
 
 function SuggestionItem({ data, addZone, value, changeInput }) {
-    let index = data.indexOf(value);
+    let index = data.toLowerCase().indexOf(value.toLowerCase());
 
     return (
         <li
             className="suggestionItem"
             data-zone={data}
             onClick={() => {
-                addZone(data);
+                addZone(zones.find(zone => zone.fullName === data).zone);
                 changeInput();
             }}
         >

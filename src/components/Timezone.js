@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment-timezone";
+import zones from "./zones";
 import * as store from "../module/city";
 import { connect } from "react-redux";
 
@@ -12,7 +13,8 @@ function Timezone({
     changeDefaultZone,
 }) {
     const getCity = () => {
-        return zoneName.split("/").pop().replace("_", " ");
+        return zones.find(zone => zone.zone === zoneName).city;
+        //return zoneName.split("/").pop().replace("_", " ");
     };
 
     const getNow = () => {
@@ -23,16 +25,9 @@ function Timezone({
         return moment.tz(zoneName).format("ddd, DD MMM");
     };
 
-    // const getCountry = () => {
-    //     let countryName = moment.tz.zone(zoneName).countries();
-    //     if (countryName.length > 1) {
-    //         return countryName[1];
-    //     }
-    //     return countryName;
-    // };
-
-    const getAbbr = () => {
-        return moment.tz(zoneName).format("z");
+    const getCountry = () => {
+        return zones.find(zone => zone.zone === zoneName).country;
+        //return moment.tz(zoneName).format("z");
     };
 
     return (
@@ -65,9 +60,8 @@ function Timezone({
                     </div>
                     <div className="timezone2">
                         <span className="countryName homeCode">
-                            {/* {getCountry()} */}
+                            {getCountry()}
                         </span>
-                        <span className="abbrZone">{getAbbr()}</span>
                         <span className="date homeDate">{getToday()}</span>
                     </div>
                 </div>

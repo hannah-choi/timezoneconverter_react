@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import moment from "moment-timezone";
+import zones from "./zones";
 import SuggestionList from "./SuggestionList";
 import { connect } from "react-redux";
 import * as searchAction from "../module/search";
 
 function Search({ addZone, inputValue, changeInput }) {
-    const timezoneDb = Object.keys(moment.tz._zones)
-        .map(data => data.replace("_", "/"))
-        .map(data => data.replace("_", " "));
+    // const timezoneDB = Object.keys(moment.tz._zones)
+    //     .map(data => data.replace("_", "/"))
+    //     .map(data => data.replace("_", " "));
+    const timezoneDB = zones.map(item => item.fullName);
     const [matchValue, setMatchValue] = useState([]);
-
-    console.log(timezoneDb);
-
     const inputChange = e => {
         changeInput(e.target.value);
         if (e.target.value.length > 0) {
@@ -21,8 +20,8 @@ function Search({ addZone, inputValue, changeInput }) {
 
     const findMatches = typedWord => {
         const regex = new RegExp(typedWord, "gi");
-        let matchArray = timezoneDb
-            .filter(timezone => timezone.match(regex))
+        let matchArray = timezoneDB
+            .filter(zone => zone.match(regex))
             .slice(0, 10);
         setMatchValue(matchArray);
     };
