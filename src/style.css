@@ -1,4 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Spartan:wght@700&display=swap");
+
+@font-face {
+    font-family: "bold";
+    src: url("./bold.otf") format("opentype");
+}
+
+:root {
+    --bg: #384146;
+    --second: #293032;
+    --point1: #03a051;
+    --point2: #05ae6b;
+    --point3: #58cd99;
+    --cyan: #b4947f;
+    --text: #f2eaeb;
+    --text2: #eeeeee;
+}
 
 body {
     font-family: "Lato", sans-serif;
@@ -8,22 +24,32 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: var(--text);
+    background-color: var(--bg);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 * {
     box-sizing: border-box;
 }
 
-h2 {
-    font-size: 13pt;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+h1 {
+    flex-basis: 100%;
+    font-size: 18pt;
+    font-weight: normal;
+    margin-bottom: 5px;
+    font-family: "bold";
+}
+
+p.sub {
+    margin-top: 0;
+    font-size: 9pt;
+    color: var(--point1);
 }
 
 div.wrapper {
+    margin: 150px auto;
     width: 1150px;
     display: flex;
     flex-wrap: wrap;
@@ -80,23 +106,33 @@ div.search {
 
 div.search input[type="text"] {
     width: 400px;
-    padding: 6px;
+    padding: 8px;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    background-color: var(--second);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+div.search input[type="text"]:focus {
+    outline: none;
 }
 
 input[type="submit"] {
+    text-transform: uppercase;
+    letter-spacing: 2px;
     outline: none;
     border: none;
-    padding: 8px 12px;
-    color: white;
-    background-color: black;
+    padding: 8px 20px;
+    color: var(--text2);
+    background-color: var(--point2);
     font-family: inherit;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-weight: 700;
     font-size: 9pt;
 }
 
 div.timezoneComp {
-    text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 8.5pt;
     width: 100%;
@@ -129,8 +165,12 @@ div.timezone div.timezone1 {
     margin-bottom: 7px;
 }
 
+div.timezone div.timezone1 .cityName {
+    font-weight: 700;
+}
+
 div.timezone div.timezone2 {
-    color: #6e6e6e;
+    color: var(--point2);
     font-size: 7.5pt;
 }
 
@@ -149,21 +189,26 @@ div.day span {
     padding: 10px 0;
     font-size: 10pt;
     text-align: center;
-    border: 1px solid rgb(238, 224, 224);
+    border-top: 1px solid var(--second);
+    border-bottom: 1px solid var(--second);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    /* border: 1px solid var(--bg); */
     height: 35px;
+    /* border-radius: 20%; */
 }
 
 div.day .date {
-    padding: 2px 0;
-    font-size: 8pt;
+    padding: 6px 0;
+    font-size: 7pt;
     text-align: center;
-    border: 1px solid rgb(238, 224, 224);
+    background-color: var(--second);
     height: 35px;
+    letter-spacing: 0;
 }
 
 span.focus {
-    background-color: black;
-    color: white;
+    background-color: var(--point1);
+    color: inherit;
 }
 
 ul.suggestionList {
@@ -172,10 +217,8 @@ ul.suggestionList {
     padding: 0;
     z-index: 10;
     list-style-type: none;
-    text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 9pt;
-    border: 1px solid gray;
     position: absolute;
     z-index: 10;
 }
@@ -185,13 +228,12 @@ ul.suggestionList li {
     justify-content: space-between;
     margin: 0;
     padding: 10px;
-    background: white;
+    background-color: var(--second);
     cursor: hand;
 }
 
 ul.suggestionList li:hover {
-    background: black;
-    color: white;
+    background: var(--cyan);
 }
 
 ul.suggestionList .listCountry {
@@ -200,22 +242,36 @@ ul.suggestionList .listCountry {
 }
 
 span.highlight {
-    background-color: gainsboro;
+    background-color: var(--point2);
 }
 
 .ds-selected {
-    background-color: cornflowerblue;
+    background-color: var(--cyan) !important;
     color: white;
     font-weight: bold;
 }
 
 .today {
-    background-color: black;
-    color: white;
-    font-weight: bold;
+    background-color: var(--point1) !important;
+    font-weight: 700;
 }
 
 .makeHome:hover,
 .remove:hover {
     cursor: pointer;
+}
+
+.icon {
+    transition: all 0.2s ease-in-out;
+}
+.icon:hover {
+    transform: scale(1.2);
+    filter: "brightness(200%)";
+}
+
+div.hoursList,
+div.timezoneList {
+    height: 90px;
+    padding-top: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

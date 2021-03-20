@@ -12,7 +12,8 @@ function App({ zoneName }) {
 
     return (
         <div className="wrapper">
-            <h2>TIMEZONE CONVERTER</h2>
+            <h1>Timezone Converter</h1>
+            <p className="sub">Drag time to convert</p>
             <Search />
             {zoneList()}
         </div>
