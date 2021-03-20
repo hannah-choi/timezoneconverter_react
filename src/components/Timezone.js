@@ -1,8 +1,6 @@
 import React from "react";
 import moment from "moment-timezone";
 import zones from "./zones";
-import * as store from "../module/city";
-import { connect } from "react-redux";
 
 function Timezone({
     zoneName,
@@ -14,7 +12,6 @@ function Timezone({
 }) {
     const getCity = () => {
         return zones.find(zone => zone.zone === zoneName).city;
-        //return zoneName.split("/").pop().replace("_", " ");
     };
 
     const getNow = () => {
@@ -26,24 +23,29 @@ function Timezone({
     };
 
     const getCountry = () => {
-        return zones.find(zone => zone.zone === zoneName).country;
-        //return moment.tz(zoneName).format("z");
+        const country = zones.find(zone => zone.zone === zoneName).country;
+        const countryName =
+            country.length <= 22 ? country : country.slice(0, 23) + "...";
+        return countryName;
     };
 
     return (
         <div className="timezoneList">
             <div className="timezoneComp">
                 <div className="home">
-                    {offset !== 0 ? (
-                        offset
-                    ) : (
+                    {offset == 0 ? (
                         <img src="images/placeholder.svg" />
+                    ) : offset > 1 ? (
+                        "+" + offset
+                    ) : (
+                        offset
                     )}
                     <span className="makeHome">
                         {offset == 0 ? (
                             ""
                         ) : (
                             <img
+                                alt="homeicon"
                                 className="makeHome"
                                 src="images/home.svg"
                                 onClick={() => changeDefaultZone(zoneName)}
@@ -67,6 +69,7 @@ function Timezone({
                 </div>
                 <div className="modify">
                     <img
+                        alt="remove"
                         className="remove"
                         data-city={zoneName}
                         src="images/cancel.svg"

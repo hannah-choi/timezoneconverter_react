@@ -1,6 +1,4 @@
-import { createStore } from "redux";
 import moment from "moment-timezone";
-import zones from "../components/zones";
 import { createAction } from "redux-actions";
 
 const ADD_ZONE = "ADD_ZONE";
@@ -17,29 +15,19 @@ const initState = {
     defaultOffset: moment.tz(moment.tz.guess()).utcOffset() / 60,
 };
 
-console.log(initState);
-
 export default (state = initState, action) => {
     switch (action.type) {
         case ADD_ZONE:
-            // let cityName = action.payload.replace(" ", "_");
-            // cityName
-            //     .split("/")
-            //     .map(
-            //         data => data[0].toUpperCase() + data.substr(1).toLowerCase()
-            //     )
-            //     .join("/");
-            console.log(action.payload);
             return {
                 ...state,
                 zoneName: [...state.zoneName, action.payload],
             };
         case DELETE_ZONE:
-            let newArray = Array.from(state.zoneName);
-            newArray.splice(action.payload, 1);
             return {
                 ...state,
-                zoneName: newArray,
+                zoneName: state.zoneName.filter(
+                    (zone, i) => i !== action.payload
+                ),
             };
         case CHANGE_DEFAULT_ZONE:
             return {

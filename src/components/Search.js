@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import moment from "moment-timezone";
 import zones from "./zones";
 import SuggestionList from "./SuggestionList";
 import { connect } from "react-redux";
 import * as searchAction from "../module/search";
 
 function Search({ addZone, inputValue, changeInput }) {
-    // const timezoneDB = Object.keys(moment.tz._zones)
-    //     .map(data => data.replace("_", "/"))
-    //     .map(data => data.replace("_", " "));
     const timezoneDB = zones.map(item => item.fullName);
     const [matchValue, setMatchValue] = useState([]);
     const inputChange = e => {

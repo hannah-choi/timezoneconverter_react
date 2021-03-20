@@ -1,4 +1,3 @@
-import { createStore } from "redux";
 import { createAction } from "redux-actions";
 
 const CHANGE_INPUT = "CHANGE_INPUT";
