@@ -9,10 +9,10 @@ Timezone converter built with React & Redux.
 ## Features
 
 1. The user's timezone is automatically set as default timezone.
-2. The user can search and add the timezone by cityname or country name. 
+2. Search and add the timezone by cityname or country name. 
 3. The default timezone can be changed by clicking the home icon of each timezone. 
 as the default timezone is changed, all the offsets and hours are changed.
-4. If the user drags, the start & end time comes out, so the range of time is displayed & converted. 
+4. When the user drags, the range of time is displayed & converted. 
 
 ## Wireframe
 
