@@ -1,76 +1,91 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Spartan:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
 
 @font-face {
-    font-family: "bold";
-    src: url("./bold.otf") format("opentype");
+    font-family: "Soleil";
+    src: url("./fonts/Soleil-Regular.TTF");
+    font-weight: 400;
 }
 
-:root {
-    --bg: #384146;
-    --second: #293032;
-    --point1: #03a051;
-    --point2: #05ae6b;
-    --point3: #58cd99;
-    --cyan: #b4947f;
-    --text: #f2eaeb;
-    --text2: #eeeeee;
+@font-face {
+    font-family: "Soleil";
+    src: url("./fonts/Soleil-Semibold.TTF");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Soleil";
+    src: url("./fonts/Soleil-Bold.ttf");
+    font-weight: 700;
 }
 
 body {
-    font-family: "Lato", sans-serif;
+    font-family: "Soleil", sans-serif;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: var(--text);
-    background-color: var(--bg);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    /* text-transform: uppercase;
+    letter-spacing: 2px; */
 }
 
 * {
     box-sizing: border-box;
 }
 
-h1 {
-    flex-basis: 100%;
-    font-size: 18pt;
+h1,
+h2,
+h3,
+h4 {
     font-weight: normal;
-    margin-bottom: 5px;
-    font-family: "bold";
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 24pt;
+    flex-basis: 100%;
+    font-weight: normal;
+    margin-bottom: 0px;
+    font-weight: 700;
 }
 
 p.sub {
     margin-top: 0;
-    font-size: 9pt;
-    color: var(--point1);
+    font-size: 12pt;
 }
 
 div.wrapper {
+    padding: 35px 50px 50px 50px;
+    width: 1260px;
     margin: 150px auto;
-    width: 1150px;
     display: flex;
     flex-wrap: wrap;
 }
 
 div.timezoneList {
-    width: 350px;
+    width: 320px;
+    border-radius: 10px 0 0 10px;
 }
 
 div.home {
+    height: 35px;
+    margin-top: 3px;
+    /* padding-top: 3px;
+    padding-bottom: 6px; */
     width: 20px;
     font-size: 8pt;
-    margin-right: 15px;
+    margin-right: 12px;
     text-align: center;
     vertical-align: center;
 }
 
 div.modify {
-    width: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 25px;
+    /* margin-left: 20px;
+    margin-right: 20px;*/
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
@@ -82,9 +97,8 @@ div.home img {
     width: 14px;
 }
 
-span.makeHome img {
-    width: 13px;
-    margin-top: 10px;
+.makeHome {
+    margin-top: 7px;
 }
 
 div.modify img {
@@ -102,17 +116,16 @@ div.search {
     width: 100%;
     padding: 20px 0;
     margin-bottom: 10px;
+    display: flex;
 }
 
 div.search input[type="text"] {
     width: 400px;
-    padding: 8px;
+    height: 32px;
+    padding: 8px 10px 8px 14px;
     border: none;
     color: inherit;
     font-family: inherit;
-    background-color: var(--second);
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 div.search input[type="text"]:focus {
@@ -120,28 +133,27 @@ div.search input[type="text"]:focus {
 }
 
 input[type="submit"] {
-    text-transform: uppercase;
-    letter-spacing: 2px;
     outline: none;
     border: none;
-    padding: 8px 20px;
-    color: var(--text2);
-    background-color: var(--point2);
+    height: 32px;
+    padding: 0px 20px;
     font-family: inherit;
-    font-weight: 700;
-    font-size: 9pt;
+    font-weight: 600;
+    font-size: 10pt;
 }
 
 div.timezoneComp {
-    letter-spacing: 1px;
+    padding-left: 20px;
     font-size: 8.5pt;
     width: 100%;
     display: flex;
     margin-bottom: 18px;
+    /* align-items: center; */
 }
 
 div.hoursList {
-    width: 800px;
+    width: 840px;
+    border-radius: 0 10px 10px 0;
 }
 
 div.hoursComp {
@@ -161,17 +173,16 @@ div.timezone {
 }
 
 div.timezone div.timezone1 {
-    font-size: 11pt;
-    margin-bottom: 7px;
+    font-size: 12.5pt;
+    margin-bottom: 3px;
 }
 
 div.timezone div.timezone1 .cityName {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 div.timezone div.timezone2 {
-    color: var(--point2);
-    font-size: 7.5pt;
+    font-size: 9pt;
 }
 
 div.timezone div.timezone1,
@@ -189,35 +200,28 @@ div.day span {
     padding: 10px 0;
     font-size: 10pt;
     text-align: center;
-    border-top: 1px solid var(--second);
-    border-bottom: 1px solid var(--second);
-    /* border: 1px solid rgba(255, 255, 255, 0.1); */
-    /* border: 1px solid var(--bg); */
     height: 35px;
-    /* border-radius: 20%; */
 }
 
 div.day .date {
     padding: 6px 0;
-    font-size: 7pt;
+    font-size: 8pt;
     text-align: center;
-    background-color: var(--second);
     height: 35px;
     letter-spacing: 0;
 }
 
 span.focus {
-    background-color: var(--point1);
     color: inherit;
 }
 
 ul.suggestionList {
     width: 400px;
-    margin-top: 5px;
+    margin-top: 33px;
     padding: 0;
     z-index: 10;
     list-style-type: none;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     font-size: 9pt;
     position: absolute;
     z-index: 10;
@@ -228,12 +232,7 @@ ul.suggestionList li {
     justify-content: space-between;
     margin: 0;
     padding: 10px;
-    background-color: var(--second);
     cursor: hand;
-}
-
-ul.suggestionList li:hover {
-    background: var(--cyan);
 }
 
 ul.suggestionList .listCountry {
@@ -241,19 +240,8 @@ ul.suggestionList .listCountry {
     width: 45%;
 }
 
-span.highlight {
-    background-color: var(--point2);
-}
-
 .ds-selected {
-    background-color: var(--cyan) !important;
-    color: white;
     font-weight: bold;
-}
-
-.today {
-    background-color: var(--point1) !important;
-    font-weight: 700;
 }
 
 .makeHome:hover,
@@ -261,17 +249,18 @@ span.highlight {
     cursor: pointer;
 }
 
-.icon {
-    transition: all 0.2s ease-in-out;
-}
-.icon:hover {
-    transform: scale(1.2);
-    filter: "brightness(200%)";
+.remove {
+    /* margin-top: px; */
+    position: absolute;
+    margin-left: 1645px;
 }
 
 div.hoursList,
 div.timezoneList {
     height: 90px;
     padding-top: 25px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+    transition: all 0.2s ease-in-out;
 }

@@ -2,6 +2,9 @@ import React from "react";
 import moment from "moment-timezone";
 import zones from "./zones";
 import ReactTooltip from "react-tooltip";
+import { ReactComponent as DeleteIcon } from "./svg/cancel.svg";
+import { ReactComponent as MakeHomeIcon } from "./svg/home.svg";
+import { ReactComponent as HomeIcon } from "./svg/placeholder.svg";
 
 function Timezone({
     zoneName,
@@ -34,11 +37,12 @@ function Timezone({
         <div className="timezoneList">
             <div className="timezoneComp">
                 <div className="home">
-                    {offset == 0 ? (
+                    {+offset === 0 ? (
                         <>
-                            <img
-                                src="images/placeholder.svg"
+                            <HomeIcon
                                 alt="hometime zone"
+                                className="homeicon icon"
+                                style={{ width: `14px` }}
                                 data-tip
                                 data-for="place"
                             />
@@ -51,26 +55,25 @@ function Timezone({
                                 Home
                             </ReactTooltip>
                         </>
-                    ) : offset > 1 ? (
+                    ) : +offset >= 1 ? (
                         "+" + offset
                     ) : (
                         offset
                     )}
                     <span className="makeHome">
-                        {offset == 0 ? (
+                        {+offset === 0 ? (
                             ""
                         ) : (
                             <>
-                                <img
-                                    alt="homeicon"
-                                    className="makeHome icon"
+                                <MakeHomeIcon
                                     data-tip
-                                    data-for="homeIcon"
-                                    src="images/home.svg"
+                                    data-for="makeHomeButton"
+                                    className="makeHome icon"
+                                    style={{ width: `13px`, height: `14px` }}
                                     onClick={() => changeDefaultZone(zoneName)}
                                 />
                                 <ReactTooltip
-                                    id="homeIcon"
+                                    id="makeHomeButton"
                                     place="top"
                                     effect="solid"
                                     backgroundColor="#b4947f"
@@ -96,14 +99,12 @@ function Timezone({
                     </div>
                 </div>
                 <div className="modify">
-                    <img
-                        alt="remove"
+                    <DeleteIcon
                         className="remove icon"
                         data-tip
                         data-for="remove"
                         data-city={zoneName}
-                        src="images/cancel.svg"
-                        width="10px"
+                        style={{ width: `10px`, height: `10px` }}
                         onClick={() => {
                             deleteZone(index);
                         }}

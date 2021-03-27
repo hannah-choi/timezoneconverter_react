@@ -32,7 +32,7 @@ function Search({ addZone, inputValue, changeInput }) {
                 onChange={e => inputChange(e)}
                 autoComplete="off"
             />
-            <input type="submit" name="submit" value="search" />
+            <input type="submit" name="submit" value="Search" />
             {inputValue && (
                 <SuggestionList
                     matchArray={matchValue}
