@@ -27,8 +27,9 @@ export const GlobalStyles = createGlobalStyle`
     }
 
   .toggleDiv{
-    position:absolute;
-    right:0;
+    /*position:absolute;
+    right:0;*/
+    margin-top: 10px;
     display:flex;
     align-items:center;
     margin-bottom:50px;
@@ -80,14 +81,12 @@ export const GlobalStyles = createGlobalStyle`
     width: 60px;
   }
 
-  .github{
-    fill: ${({ theme }) => theme.text};
-}
-
-  .github:hover{
-    fill:${({ theme }) => theme.point1};
+  .searchIcon{
+    position:absolute;
+    top:20px;
+    left:15px;
+    fill:${({ theme }) => theme.point3};
   }
-
 
   p.sub{
     color: ${({ theme }) => theme.point1};
@@ -114,7 +113,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ul.suggestionList {
-      width:385px;
+      padding-left:10px;
+      width:390px;
   }
 
   ul.suggestionList li {
@@ -126,7 +126,7 @@ ul.suggestionList li:hover {
 }
 
 span.highlight {
-    background-color: ${({ theme }) => theme.point1};
+    background-color: ${({ theme }) => theme.point3};
 }
 
 .ds-selected {

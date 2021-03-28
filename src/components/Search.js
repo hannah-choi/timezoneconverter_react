@@ -3,6 +3,7 @@ import zones from "./zones";
 import SuggestionList from "./SuggestionList";
 import { connect } from "react-redux";
 import * as searchAction from "../module/search";
+import { ReactComponent as SearchIcon } from "./svg/search.svg";
 
 function Search({ addZone, inputValue, changeInput }) {
     const timezoneDB = zones.map(item => item.fullName);
@@ -24,6 +25,7 @@ function Search({ addZone, inputValue, changeInput }) {
 
     return (
         <div className="search">
+            <SearchIcon className="searchIcon" style={{ width: `13px` }} />
             <input
                 type="text"
                 name="searchInput"

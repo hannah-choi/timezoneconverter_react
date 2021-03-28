@@ -13,12 +13,6 @@
     font-weight: 600;
 }
 
-@font-face {
-    font-family: "Soleil";
-    src: url("./fonts/Soleil-Bold.ttf");
-    font-weight: 700;
-}
-
 body {
     font-family: "Soleil", sans-serif;
     -webkit-touch-callout: none;
@@ -27,6 +21,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background-color: #cbbde5;
     /* text-transform: uppercase;
     letter-spacing: 2px; */
 }
@@ -49,7 +44,15 @@ h1 {
     flex-basis: 100%;
     font-weight: normal;
     margin-bottom: 0px;
-    font-weight: 700;
+    font-weight: 600;
+}
+
+.header {
+    display: flex;
+}
+
+.title {
+    width: 1070px;
 }
 
 p.sub {
@@ -113,8 +116,9 @@ div.modify img:first-of-type {
 }
 
 div.search {
+    position: relative;
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0 20px 0;
     margin-bottom: 10px;
     display: flex;
 }
@@ -122,7 +126,7 @@ div.search {
 div.search input[type="text"] {
     width: 400px;
     height: 32px;
-    padding: 8px 10px 8px 14px;
+    padding: 8px 10px 8px 35px;
     border: none;
     color: inherit;
     font-family: inherit;
@@ -133,6 +137,7 @@ div.search input[type="text"]:focus {
 }
 
 input[type="submit"] {
+    display: none;
     outline: none;
     border: none;
     height: 32px;
@@ -238,10 +243,6 @@ ul.suggestionList li {
 ul.suggestionList .listCountry {
     text-align: right;
     width: 45%;
-}
-
-.ds-selected {
-    font-weight: bold;
 }
 
 .makeHome:hover,

@@ -26,10 +26,18 @@ function App({ zoneName }) {
     return (
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
             <GlobalStyles />
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
             <div className="wrapper">
-                <h1>Timezone Converter</h1>
-                <p className="sub">Search to add & Drag time to convert</p>
+                <div className="header">
+                    <div className="title">
+                        <h1>Timezone Converter</h1>
+                        <p className="sub">
+                            Search to add cities & Drag time to convert
+                        </p>
+                    </div>
+                    <div className="toggle">
+                        <Toggle theme={theme} toggleTheme={toggleTheme} />
+                    </div>
+                </div>
                 <Search />
                 {zoneList()}
             </div>
