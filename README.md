@@ -2,9 +2,10 @@
 
 Timezone converter built with React & Redux.
 
-<img width="1680" alt="Screenshot 2021-03-20 at 20 09 04" src="https://user-images.githubusercontent.com/62843726/111888069-26f9b000-89d1-11eb-8bbe-fd0af44f26fd.png">
-<img width="1680" alt="Screenshot 2021-03-20 at 20 10 55" src="https://user-images.githubusercontent.com/62843726/111888056-10ebef80-89d1-11eb-8200-9246ef05168f.png">
-<img width="1680" alt="Screenshot 2021-03-20 at 20 11 31" src="https://user-images.githubusercontent.com/62843726/111888057-121d1c80-89d1-11eb-9305-95fb9998fcae.png">
+<img width="1680" alt="Screenshot 2021-03-28 at 17 07 32" src="https://user-images.githubusercontent.com/62843726/112759058-39837300-8fe9-11eb-89e3-0b749e2db6f8.png">
+<img width="1680" alt="Screenshot 2021-03-28 at 17 08 14" src="https://user-images.githubusercontent.com/62843726/112759057-38eadc80-8fe9-11eb-9db3-5cc34a06ef37.png">
+<img width="1680" alt="Screenshot 2021-03-28 at 17 10 37" src="https://user-images.githubusercontent.com/62843726/112759053-35575580-8fe9-11eb-815b-24b5bce5b663.png">
+
 
 ## Features
 
