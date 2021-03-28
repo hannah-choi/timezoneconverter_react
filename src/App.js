@@ -6,6 +6,7 @@ import Toggle from "./components/Toggle";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/Theme";
 import { GlobalStyles } from "./components/Global";
+import Footer from "./components/Footer";
 
 function App({ zoneName }) {
     const [theme, setTheme] = useState("light");
@@ -41,6 +42,7 @@ function App({ zoneName }) {
                 <Search />
                 {zoneList()}
             </div>
+            <Footer />
         </ThemeProvider>
     );
 }

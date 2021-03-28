@@ -22,8 +22,6 @@ body {
     -ms-user-select: none;
     user-select: none;
     background-color: #cbbde5;
-    /* text-transform: uppercase;
-    letter-spacing: 2px; */
 }
 
 * {
@@ -63,7 +61,7 @@ p.sub {
 div.wrapper {
     padding: 35px 50px 50px 50px;
     width: 1260px;
-    margin: 150px auto;
+    margin: 150px 0 0px 0;
     display: flex;
     flex-wrap: wrap;
 }
@@ -76,8 +74,6 @@ div.timezoneList {
 div.home {
     height: 35px;
     margin-top: 3px;
-    /* padding-top: 3px;
-    padding-bottom: 6px; */
     width: 20px;
     font-size: 8pt;
     margin-right: 12px;
@@ -87,8 +83,6 @@ div.home {
 
 div.modify {
     width: 25px;
-    /* margin-left: 20px;
-    margin-right: 20px;*/
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
@@ -262,6 +256,23 @@ div.timezoneList {
     padding-top: 25px;
 }
 
+footer {
+    font-size: 9.5pt;
+    margin: 0 auto;
+    width: 1220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .icon {
     transition: all 0.2s ease-in-out;
+}
+
+a.git_link {
+    width: 110px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

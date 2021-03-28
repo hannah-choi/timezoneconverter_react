@@ -157,6 +157,19 @@ input[type="submit"] {
     background-color: ${({ theme }) => theme.point3};
 }
 
+a.git_link {
+    color:${({ theme }) => theme.primary};
+}
+
+a.git_link:hover {
+    color:${({ theme }) => theme.point1};
+}
+
+.github{
+    fill: ${({ theme }) => theme.point1};
+}
+
+
 
 .remove:hover,
 .makeHome:hover{
