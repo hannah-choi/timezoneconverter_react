@@ -1,17 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Spartan:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap");
-
-@font-face {
-    font-family: "Soleil";
-    src: url("./fonts/Soleil-Regular.TTF");
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Soleil";
-    src: url("./fonts/Soleil-Semibold.TTF");
-    font-weight: 600;
-}
 
 body {
     font-family: "Work Sans", sans-serif;
