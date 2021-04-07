@@ -14,11 +14,21 @@ function Hour({ zoneName, offset, gmt, setTime }) {
     };
 
     const getToday = () => {
-        return moment.tz(zoneName).format("DD MMM");
+        const today = moment.tz(zoneName).format("DD MMM");
+        return today.split(" ").map(item => (
+            <p key={item} className="todayP">
+                {item}
+            </p>
+        ));
     };
 
     const getTomorrow = () => {
-        return moment.tz(zoneName).add(1, "days").format("DD MMM");
+        const tomorrow = moment.tz(zoneName).add(1, "days").format("DD MMM");
+        return tomorrow.split(" ").map(item => (
+            <p key={item} className="todayP">
+                {item}
+            </p>
+        ));
     };
 
     const getClass = i => {

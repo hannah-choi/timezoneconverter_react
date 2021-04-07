@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Spartan:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap");
 
 @font-face {
     font-family: "Soleil";
@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: "Soleil", sans-serif;
+    font-family: "Work Sans", sans-serif;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -203,11 +203,16 @@ div.day span {
 }
 
 div.day .date {
-    padding: 6px 0;
+    padding: 5px 0;
     font-size: 8pt;
     text-align: center;
     height: 35px;
     letter-spacing: 0;
+}
+
+p.todayP {
+    padding: 0;
+    margin: 0;
 }
 
 span.focus {

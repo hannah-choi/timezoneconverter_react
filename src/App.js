@@ -9,7 +9,7 @@ import { GlobalStyles } from "./components/Global";
 import Footer from "./components/Footer";
 
 function App({ zoneName }) {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("dark");
     const toggleTheme = () => {
         if (theme === "light") {
             setTheme("dark");

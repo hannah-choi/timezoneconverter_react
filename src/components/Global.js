@@ -104,9 +104,6 @@ export const GlobalStyles = createGlobalStyle`
     border-bottom: 1px solid ${({ theme }) => theme.point3};*/
   }
 
-  div.day .date {
-    background-color: ${({ theme }) => theme.point3};
-  }
 
   span.focus {
     background-color: ${({ theme }) => theme.point2};
@@ -137,6 +134,11 @@ span.highlight {
     background-color: ${({ theme }) => theme.point1} !important;
     color:${({ theme }) => theme.primary} !important;
 }
+
+div.day .date {
+    background-color: ${({ theme }) => theme.point3} !important;
+  }
+
 
 div.hoursList,
 div.timezoneList {
